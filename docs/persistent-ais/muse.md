@@ -121,9 +121,28 @@ Using a side chat leaves the main chat free for other work.
 
 ## 2. Paste the tutor text
 
-Paste the entire file below as the first message in the side chat. You can
-also [download the tutor text](../assets/persistent-ais/data8-tutor-paste-into-chat.txt)
-and copy it from there.
+Paste the entire file as the first message in the side chat. Use the
+clipboard button to copy the full tutor text, or
+[download it](../assets/persistent-ais/data8-tutor-paste-into-chat.txt).
+
+<details class="tutor-snippet" markdown>
+<summary>
+<button type="button" class="tutor-snippet__copy" aria-label="Copy tutor text">
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+<path fill="currentColor" d="M16 4h-1.18A3 3 0 0 0 12 2a3 3 0 0 0-2.82 2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm-4-1a1 1 0 0 1 1 1h-2a1 1 0 0 1 1-1zm4 17H8V6h2.18c.4.6 1.08 1 1.82 1s1.42-.4 1.82-1H16z"/>
+</svg>
+</button>
+<span class="tutor-snippet__preview">A Data 8 tutor for UC Berkeley students. On first use it
+sets up the Spring 2026 course materials on its own,
+then gives hints, cites lectures and the textbook, and
+does not hand over solution code or answer keys.
+
+Tutor role: Data 8 (Foundations of Data Science) tutor
+for UC Berkeley students. Teach Socratically with short
+guiding questions or the next hint, never the finished</span>
+<span class="tutor-snippet__action tutor-snippet__action--show">Show the full tutor text</span>
+<span class="tutor-snippet__action tutor-snippet__action--hide">Hide the full tutor text</span>
+</summary>
 
 ```text
 A Data 8 tutor for UC Berkeley students. On first use it
@@ -227,6 +246,8 @@ Keep replies concise.
 
 After setup, ask what they want help with.
 ```
+
+</details>
 
 Do not upload files from your personal computer, and do not ask Muse to
 browse, mount, or access your local drives. The pasted text tells it to

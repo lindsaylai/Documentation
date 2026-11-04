@@ -21,7 +21,7 @@ running the project's local CLI, Discord, or Slack engine.
 <a class="option-card option-card--compact" href="muse/">
   <div class="option-card__body">
     <div class="option-card__heading">
-      <img class="option-card__logo" src="../assets/gallery/muse.svg" alt="">
+      <img class="option-card__logo" src="../assets/gallery/muse.png" alt="">
       <h3>Muse</h3>
     </div>
     <p>Paste the tutor text into a Muse side chat. The agent then sets up the corpus on its own computer.</p>

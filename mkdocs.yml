@@ -70,6 +70,7 @@ plugins:
 
 markdown_extensions:
   - admonition
+  - pymdownx.details
   - attr_list
   - md_in_html
   - pymdownx.emoji:
@@ -82,5 +83,8 @@ markdown_extensions:
 
 extra_css:
   - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/copy-tutor.js
 
 strict: true

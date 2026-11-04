@@ -726,8 +726,137 @@ html {
   background: #ffffff;
 }
 
-.md-content .option-card--compact .option-card__logo[src$="muse.svg"] {
-  background: #111111;
+.md-content .option-card--compact .option-card__logo[src$="muse.png"] {
+  padding: 0.4rem;
+  object-fit: contain;
+  background: #ffffff;
+}
+
+.md-typeset details > summary {
+  cursor: pointer;
+}
+
+.md-typeset details.tutor-snippet {
+  position: relative;
+  margin: 1.25rem 0 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--lab-signal) 55%, var(--md-default-fg-color--lightest));
+  background: var(--lab-surface);
+  box-shadow: var(--lab-shadow);
+}
+
+.md-typeset details.tutor-snippet .md-clipboard,
+.md-typeset details.tutor-snippet .md-code__button {
+  display: none !important;
+}
+
+.md-typeset .tutor-snippet__copy {
+  display: grid;
+  position: absolute;
+  z-index: 2;
+  top: 0.55rem;
+  right: 0.55rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  padding: 0;
+  place-items: center;
+  color: var(--lab-ink);
+  border: 0;
+  border-radius: 0.3rem;
+  background: var(--lab-signal);
+  box-shadow: 0 0.25rem 0.7rem rgb(0 38 118 / 18%);
+  cursor: pointer;
+}
+
+.md-typeset .tutor-snippet__copy svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.md-typeset .tutor-snippet__copy:hover,
+.md-typeset .tutor-snippet__copy:focus-visible {
+  background: #ffc44a;
+}
+
+.md-typeset .tutor-snippet__copy.is-copied {
+  color: #0e3b1f;
+  background: #8ee0a8;
+}
+
+.md-typeset details.tutor-snippet[open] .tutor-snippet__copy {
+  color: var(--lab-signal);
+  background: var(--lab-ink);
+}
+
+.md-typeset details.tutor-snippet > summary {
+  display: grid;
+  padding: 0;
+  list-style: none;
+}
+
+.md-typeset details.tutor-snippet > summary::before,
+.md-typeset details.tutor-snippet > summary::after {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  content: none !important;
+  background: none !important;
+  mask-image: none !important;
+}
+
+.md-typeset details.tutor-snippet > summary::-webkit-details-marker,
+.md-typeset details.tutor-snippet > summary::marker {
+  display: none;
+  content: none;
+}
+
+.tutor-snippet__preview {
+  display: block;
+  max-height: 11.5rem;
+  overflow: hidden;
+  padding: 0.95rem 3.2rem 1.4rem 1.1rem;
+  color: var(--lab-text);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  mask-image: linear-gradient(to bottom, #000 58%, transparent 100%);
+}
+
+.tutor-snippet__action {
+  display: block;
+  padding: 0.7rem 3.2rem 0.7rem 1.1rem;
+  color: var(--lab-ink);
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  background: var(--lab-signal);
+}
+
+.tutor-snippet__action--hide,
+.md-typeset details.tutor-snippet[open] .tutor-snippet__preview,
+.md-typeset details.tutor-snippet[open] .tutor-snippet__action--show {
+  display: none;
+}
+
+.md-typeset details.tutor-snippet[open] .tutor-snippet__action--hide {
+  display: block;
+}
+
+.md-typeset details.tutor-snippet[open] > summary {
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.md-typeset details.tutor-snippet .highlight {
+  margin: 0;
+}
+
+[data-md-color-scheme="slate"] .tutor-snippet__preview {
+  color: #d7e3f8;
+}
+
+[data-md-color-scheme="slate"] .tutor-snippet__action {
+  color: var(--lab-ink);
 }
 
 .guide-actions .md-button:not(.md-button--primary) {

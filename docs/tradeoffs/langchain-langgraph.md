@@ -6,6 +6,43 @@ calls into a pipeline. **LangGraph** builds on that idea with explicit state
 and branching: the system can choose the next step instead of always running
 the same sequence.
 
+## The pieces, as blocks
+
+Orchestration is about how blocks connect. A chain lines them up once. A graph
+keeps the same kinds of blocks, but lets the run choose which block fires next.
+
+<div class="piece-map" markdown>
+
+<p class="piece-map__title">Fixed path versus chosen path</p>
+<p class="piece-map__lede">
+Same tutoring ingredients; different control of order and retry.
+</p>
+
+<div class="piece-compare">
+<div class="piece-compare__pane">
+<h3>Chain (linear)</h3>
+<ul class="piece-compare__steps">
+<li>Receive the student question</li>
+<li>Look up the corpus</li>
+<li>Read the retrieved chunks</li>
+<li>Generate a response</li>
+</ul>
+</div>
+<div class="piece-compare__pane piece-compare__pane--graph">
+<h3>Graph (agentic)</h3>
+<ul class="piece-compare__steps">
+<li>Receive the student question</li>
+<li>Search corpus</li>
+<li>Ask a clarifying question</li>
+<li>Reread a passage</li>
+<li>Check a calculation</li>
+<li>Generate or refuse</li>
+</ul>
+</div>
+</div>
+
+</div>
+
 ## Two orchestration styles
 
 ### Linear sequence

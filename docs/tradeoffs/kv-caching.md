@@ -10,6 +10,85 @@ For tutors, the useful form of caching is usually **prefix reuse**—system
 instructions, shared tutoring rules, and common course context—not storing a
 finished answer for each exact student question.
 
+## The pieces, as blocks
+
+Each prompt token owns a paired **key** and **value**. Visually, treat every
+token as one column: the top half is the key, the bottom half is the value.
+Caching keeps those columns for tokens that already appeared, so later
+generation only fills columns for new tokens.
+
+<div class="piece-map" markdown>
+
+<p class="piece-map__title">One prompt, token by token</p>
+<p class="piece-map__lede">
+Shared tutor preamble stays warm. Retrieved course text and the student
+question still arrive as ordinary tokens; only the shared prefix is reused.
+</p>
+
+<ul class="piece-map__strip">
+<li class="piece-map__token piece-map__token--cached">
+<p class="piece-map__token-label">Sys</p>
+<div class="piece-map__kv">
+<p class="piece-map__half piece-map__half--key">K</p>
+<p class="piece-map__half piece-map__half--value">V</p>
+</div>
+</li>
+<li class="piece-map__token piece-map__token--cached">
+<p class="piece-map__token-label">Rules</p>
+<div class="piece-map__kv">
+<p class="piece-map__half piece-map__half--key">K</p>
+<p class="piece-map__half piece-map__half--value">V</p>
+</div>
+</li>
+<li class="piece-map__token piece-map__token--cached">
+<p class="piece-map__token-label">Style</p>
+<div class="piece-map__kv">
+<p class="piece-map__half piece-map__half--key">K</p>
+<p class="piece-map__half piece-map__half--value">V</p>
+</div>
+</li>
+<li class="piece-map__token">
+<p class="piece-map__token-label">Ctx</p>
+<div class="piece-map__kv">
+<p class="piece-map__half piece-map__half--key">K</p>
+<p class="piece-map__half piece-map__half--value">V</p>
+</div>
+</li>
+<li class="piece-map__token piece-map__token--fresh">
+<p class="piece-map__token-label">Ask</p>
+<div class="piece-map__kv">
+<p class="piece-map__half piece-map__half--key">K</p>
+<p class="piece-map__half piece-map__half--value">V</p>
+</div>
+</li>
+</ul>
+
+<ul class="piece-map__caption">
+<li><span class="piece-map__swatch piece-map__swatch--key" aria-hidden="true"></span> Key half</li>
+<li><span class="piece-map__swatch piece-map__swatch--value" aria-hidden="true"></span> Value half</li>
+<li><span class="piece-map__swatch piece-map__swatch--cached" aria-hidden="true"></span> Cached prefix</li>
+<li><span class="piece-map__swatch piece-map__swatch--fresh" aria-hidden="true"></span> New tokens</li>
+</ul>
+
+<dl class="piece-map__defs">
+<div>
+<dt>Key</dt>
+<dd>
+The address side of the token: how later attention finds this position when
+deciding what to look at.
+</dd>
+</div>
+<div>
+<dt>Value</dt>
+<dd>
+The content side of the token: what information is carried forward once
+attention selects that position.
+</dd>
+</div>
+</dl>
+
+</div>
+
 ## Why it comes up
 
 Student questions vary, but large parts of the prompt often do not: the

@@ -9,6 +9,46 @@ The Data 8 tutor already follows this pattern. See
 [GPT Corpus](../model-options/data8/corpus-options.md) for how the local BM25
 index and optional embeddings work today.
 
+## The pieces, as blocks
+
+RAG is a handoff across four blocks: the student question, the searchable
+corpus, the retrieved passages that enter the prompt, and the model that writes
+the reply. Nothing here is a key/value cache; these are content blocks the
+pipeline moves.
+
+<div class="piece-map" markdown>
+
+<p class="piece-map__title">Retrieve, then generate</p>
+<p class="piece-map__lede">
+The corpus stays outside the model. Only the selected passages join the prompt
+for that turn.
+</p>
+
+<ul class="piece-flow">
+<li class="piece-flow__node piece-flow__node--origin">
+<p class="piece-flow__role">Input</p>
+<p class="piece-flow__name">Student question</p>
+<p class="piece-flow__note">Wording students actually use</p>
+</li>
+<li class="piece-flow__node">
+<p class="piece-flow__role">Store</p>
+<p class="piece-flow__name">Course corpus</p>
+<p class="piece-flow__note">Lectures, worksheets, text</p>
+</li>
+<li class="piece-flow__node piece-flow__node--accent">
+<p class="piece-flow__role">Select</p>
+<p class="piece-flow__name">Retrieved chunks</p>
+<p class="piece-flow__note">BM25 or embeddings hit list</p>
+</li>
+<li class="piece-flow__node">
+<p class="piece-flow__role">Generate</p>
+<p class="piece-flow__name">Tutor reply</p>
+<p class="piece-flow__note">Grounded in those passages</p>
+</li>
+</ul>
+
+</div>
+
 ## Why it comes up
 
 A tutor that only uses pretrained model knowledge can invent course details,

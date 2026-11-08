@@ -8,6 +8,41 @@ so many concurrent requests can share limited hardware.
 Using vLLM means the project would run (or manage) a model server instead of
 only calling a hosted API such as OpenRouter or OpenAI.
 
+## The pieces, as blocks
+
+vLLM sits under the tutoring stack: it does not choose course passages or write
+pedagogy. It packs many requests onto one GPU and manages the **key/value**
+memory those requests need while tokens are generated.
+
+<div class="piece-map" markdown>
+
+<p class="piece-map__title">Serving layer under the tutor</p>
+<p class="piece-map__lede">
+Course retrieval and prompts still happen above. vLLM owns how tokens are
+scheduled and how KV memory is paged on the GPU.
+</p>
+
+<ul class="piece-stack">
+<li class="piece-stack__row">
+<p class="piece-stack__layer">Tutor</p>
+<p class="piece-stack__body"><strong>RAG + prompts</strong> — question, retrieved chunks, reply policy</p>
+</li>
+<li class="piece-stack__row">
+<p class="piece-stack__layer">Requests</p>
+<p class="piece-stack__body"><strong>Concurrent sessions</strong> — many students sharing one engine</p>
+</li>
+<li class="piece-stack__row piece-stack__row--focus">
+<p class="piece-stack__layer">vLLM</p>
+<p class="piece-stack__body"><strong>PagedAttention</strong> — KV blocks allocated like pages in memory</p>
+</li>
+<li class="piece-stack__row">
+<p class="piece-stack__layer">Hardware</p>
+<p class="piece-stack__body"><strong>GPU capacity</strong> — throughput depends on cards you operate</p>
+</li>
+</ul>
+
+</div>
+
 ## Why it comes up
 
 Hosted APIs are simple and already power the documented Data 8 brains. Self-

@@ -1042,11 +1042,19 @@ html {
    same block grammar so the Tradeoffs tab reads as one visual system.
    Selectors sit under .md-typeset so Material list rules cannot flatten them. */
 .md-typeset .piece-map {
-  --piece-key: var(--lab-ink);
-  --piece-value: #3b7ea1;
-  --piece-warm: color-mix(in srgb, var(--lab-signal) 28%, var(--lab-surface));
-  --piece-cool: color-mix(in srgb, var(--lab-rule) 35%, var(--lab-surface));
-  --piece-edge: color-mix(in srgb, var(--lab-ink) 18%, transparent);
+  --piece-key: #002676;
+  --piece-key-ink: #ffffff;
+  --piece-value: #1f6f8b;
+  --piece-value-ink: #ffffff;
+  --piece-warm: #fdb515;
+  --piece-warm-ink: #002676;
+  --piece-cool: #d7e8f8;
+  --piece-cool-ink: #002676;
+  --piece-fresh: #9fd1ff;
+  --piece-fresh-ink: #002676;
+  --piece-edge: color-mix(in srgb, var(--lab-ink) 16%, transparent);
+  --piece-panel: var(--lab-surface);
+  --piece-panel-top: color-mix(in srgb, var(--lab-rule) 22%, var(--lab-surface));
 
   margin: 1.35rem 0 2rem;
   padding: 1.15rem 1.2rem 1.25rem;
@@ -1054,15 +1062,26 @@ html {
   background:
     linear-gradient(
       180deg,
-      color-mix(in srgb, var(--lab-rule) 18%, var(--lab-surface)) 0%,
-      var(--lab-surface) 42%
+      var(--piece-panel-top) 0%,
+      var(--piece-panel) 42%
     );
   box-shadow: var(--lab-shadow);
 }
 
 [data-md-color-scheme="slate"] .md-typeset .piece-map {
-  --piece-value: #7eb6d9;
-  --piece-edge: color-mix(in srgb, var(--lab-rule) 35%, transparent);
+  --piece-key: #9fd1ff;
+  --piece-key-ink: #00194f;
+  --piece-value: #3d9bb8;
+  --piece-value-ink: #041018;
+  --piece-warm: #fdb515;
+  --piece-warm-ink: #00194f;
+  --piece-cool: #1a335f;
+  --piece-cool-ink: #d7e8f8;
+  --piece-fresh: #f4f7fc;
+  --piece-fresh-ink: #00194f;
+  --piece-edge: color-mix(in srgb, var(--lab-rule) 40%, transparent);
+  --piece-panel: #0f1c38;
+  --piece-panel-top: #15274a;
 }
 
 .md-typeset .piece-map__title {
@@ -1107,7 +1126,7 @@ html {
 .md-typeset .piece-map__token-label {
   margin: 0;
   padding: 0.35rem 0.4rem;
-  color: var(--lab-ink);
+  color: var(--piece-cool-ink);
   background: var(--piece-cool);
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.62rem;
@@ -1118,17 +1137,14 @@ html {
   text-transform: uppercase;
 }
 
-[data-md-color-scheme="slate"] .md-typeset .piece-map__token-label {
-  color: var(--lab-text);
-}
-
 .md-typeset .piece-map__token--cached .piece-map__token-label {
+  color: var(--piece-warm-ink);
   background: var(--piece-warm);
 }
 
 .md-typeset .piece-map__token--fresh .piece-map__token-label {
-  color: #fff;
-  background: var(--lab-ink);
+  color: var(--piece-fresh-ink);
+  background: var(--piece-fresh);
 }
 
 .md-typeset .piece-map__kv {
@@ -1151,13 +1167,13 @@ html {
 }
 
 .md-typeset .piece-map__half--key {
-  color: #fff;
+  color: var(--piece-key-ink);
   background: var(--piece-key);
-  border-bottom: 1px solid color-mix(in srgb, #fff 18%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--piece-key-ink) 18%, transparent);
 }
 
 .md-typeset .piece-map__half--value {
-  color: #fff;
+  color: var(--piece-value-ink);
   background: var(--piece-value);
 }
 
@@ -1203,7 +1219,7 @@ html {
 }
 
 .md-typeset .piece-map__swatch--fresh {
-  background: var(--lab-ink);
+  background: var(--piece-fresh);
 }
 
 .md-typeset .piece-map__defs {
@@ -1252,25 +1268,35 @@ html {
   gap: 0.35rem;
   margin: 0;
   padding: 0.7rem 0.75rem;
+  color: var(--md-default-fg-color);
   border-top: 2px solid var(--lab-rule);
-  background: color-mix(in srgb, var(--lab-surface) 88%, var(--lab-rule));
+  background: color-mix(in srgb, var(--lab-rule) 14%, var(--lab-surface));
   list-style: none;
 }
 
 .md-typeset .piece-flow__node--origin {
-  border-top-color: var(--lab-ink);
-  background: var(--lab-ink);
-  color: #fff;
+  border-top-color: #9fd1ff;
+  background: #002676;
+  color: #ffffff;
+}
+
+[data-md-color-scheme="slate"] .md-typeset .piece-flow__node--origin {
+  border-top-color: #fdb515;
+  background: #143f8f;
 }
 
 .md-typeset .piece-flow__node--origin .piece-flow__role,
 .md-typeset .piece-flow__node--origin .piece-flow__note {
-  color: color-mix(in srgb, #fff 78%, var(--lab-rule));
+  color: color-mix(in srgb, #ffffff 72%, #9fd1ff);
 }
 
 .md-typeset .piece-flow__node--accent {
-  border-top-color: var(--lab-signal);
-  background: color-mix(in srgb, var(--lab-signal) 18%, var(--lab-surface));
+  border-top-color: #fdb515;
+  background: color-mix(in srgb, #9fd1ff 18%, var(--lab-surface));
+}
+
+[data-md-color-scheme="slate"] .md-typeset .piece-flow__node--accent {
+  background: #1a335f;
 }
 
 .md-typeset .piece-flow__role {
@@ -1299,7 +1325,15 @@ html {
 }
 
 .md-typeset .piece-flow__node--origin .piece-flow__name {
-  color: #fff;
+  color: #ffffff;
+}
+
+.md-typeset .piece-flow__node--accent .piece-flow__role {
+  color: color-mix(in srgb, var(--lab-ink) 70%, var(--lab-signal));
+}
+
+[data-md-color-scheme="slate"] .md-typeset .piece-flow__node--accent .piece-flow__role {
+  color: #fdb515;
 }
 
 .md-typeset .piece-compare {
@@ -1380,13 +1414,17 @@ html {
   margin: 0;
   padding: 0.55rem 0.65rem;
   border-top: 2px solid var(--lab-rule);
-  background: color-mix(in srgb, var(--lab-surface) 92%, var(--lab-rule));
+  background: color-mix(in srgb, var(--lab-rule) 12%, var(--lab-surface));
   list-style: none;
 }
 
 .md-typeset .piece-stack__row--focus {
-  border-top-color: var(--lab-signal);
-  background: color-mix(in srgb, var(--lab-signal) 16%, var(--lab-surface));
+  border-top-color: #fdb515;
+  background: color-mix(in srgb, #9fd1ff 16%, var(--lab-surface));
+}
+
+[data-md-color-scheme="slate"] .md-typeset .piece-stack__row--focus {
+  background: #1a335f;
 }
 
 .md-typeset .piece-stack__layer {
